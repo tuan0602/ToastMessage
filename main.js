@@ -1,38 +1,38 @@
-
-function toast ( {
-    title = '', message = '', type ='',duration = ''
-}) {
-    const main = document.getElementById('toast');
-    const delay = (duration/1000).toFixed(2);
-   
-
-    if (main) {
-        
+function toast({ title = '',message = '', type='',duration = ''}){
+    const main =document.getElementById('toast');
+    if(main) {
         const toast = document.createElement('div');
-        const icons = {
-            success: 'fa-solid fa-circle-check',
-            info: 'fa-solid fa-circle-info',
-            error: 'fa-solid fa-circle-exclamation'
-        };
-        const icon =icons[type];
-        toast.classList.add('toast', `toast--${type}`);
-        // auto remove 
-        const autoRemoveId=setTimeout(function() {
-            main.removeChild(toast)
-    
-            }, duration + 1000)
+        toast.classList.add('toast',`toast--${type}`);
 
-        //remove toast when click
-        toast.onclick = function (e) {
+        // icons
+        const icons = {
+            success : 'fa-solid fa-circle-check ',
+            info: 'fa-solid fa-circle-info ',
+            error: 'fa-solid fa-circle-exclamation'
+        }
+        // get icon
+        
+        const icon = icons[type];
+
+        // auto remove toast message
+        const autoRemoveId =  setTimeout(function(){
+            main.removeChild(toast)
+        },duration + 1000);
+        // remove when click 
+        toast.onclick = function(e) {
             if(e.target.closest('.toast__close'))
             {
                 main.removeChild(toast);
                 clearTimeout(autoRemoveId)
             }
-            
-       }
-        toast.style.animation = `slideInLeft  linear .4s, fadeOut  linear 1s ${delay}s forwards`
-        toast.innerHTML = `
+        }
+
+        // animation toast
+        const delay = (duration/1000).toFixed(2)
+        toast.style.animation = `slideInLeft  linear .4s, fadeOut  linear 1s ${delay}s forwards`;
+
+        // add toast
+        toast.innerHTML =`
             <div class="toast__icon">
                 <i class="${icon}"></i>
             </div>
@@ -43,24 +43,23 @@ function toast ( {
             <div class="toast__close">
                 <i class="fa-solid fa-xmark"></i>
             </div>
-        ` ;
+        `;
         main.appendChild(toast)
-
-        
-       
-
     }
-
-
 }
 function showSuccessToast() {
-    toast ({
-        title : 'success' ,message : 'Bạn đã đăng nhập thành công ',type: 'success', duration : 4000
+    toast({
+        title:'success',
+        message: ' bạn đã đăng nhập thành công ',
+        type:'success',
+        duration: 4000
     })
 }
-
 function showErrorToast() {
-    toast ({
-        title : 'Error' ,message : 'Bạn đã đăng nhập thất bại ',type: 'error', duration : 4000
+    toast({
+        title:'info',
+        message: ' bạn đã đăng nhập không thành công ',
+        type:'info',
+        duration: 4000
     })
 }

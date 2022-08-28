@@ -49,7 +49,7 @@ body {
   #toast {
     position: fixed;
     top: 50px;
-    right: 38px;
+    right: 0.625em;
     z-index: 99;
   }
 .toast  {
