@@ -55,12 +55,12 @@ function toast ( {
 }
 function showSuccessToast() {
     toast ({
-        title : 'success' ,message : 'Anyone with access can  view your invited visistor',type: 'success', duration : 4000
+        title : 'success' ,message : 'Bạn đã đăng nhập thành công ',type: 'success', duration : 4000
     })
 }
 
 function showErrorToast() {
     toast ({
-        title : 'Error' ,message : 'Anyone with access can  view your invited visistor',type: 'error', duration : 4000
+        title : 'Error' ,message : 'Bạn đã đăng nhập thất bại ',type: 'error', duration : 4000
     })
 }
